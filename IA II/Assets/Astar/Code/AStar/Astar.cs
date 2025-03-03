@@ -33,8 +33,8 @@ namespace Blakes.Graph
         //Wich every node contains multiple connection
         //defines the graph 
         
-        [SerializeField] protected List<Node> graph;
-        [SerializeField] protected List<Node> nodesContainer;
+        [SerializeField] protected List<Cell> graph;
+        [SerializeField] protected List<Cell> nodesContainer;
 
         #endregion
         
@@ -48,8 +48,8 @@ namespace Blakes.Graph
         //truncatedRoutes
         //failledRoutes
 
-        [SerializeField] protected Node initialNode;
-        [SerializeField] protected Node finalNode;
+        [SerializeField] protected Cell initialCell;
+        [SerializeField] protected Cell finalCell;
 
         #endregion
 
@@ -58,12 +58,12 @@ namespace Blakes.Graph
         public void CalculateAllRoutes()
         {
             initialRoute = new Route();
-            initialRoute.AddNode(initialNode, 0);
+            initialRoute.AddNode(initialCell, 0);
 
             allRoutes = new List<Route>();
             allRoutes.Add(initialRoute);
             //Recursive Method
-            ExploreBranchTree(initialRoute, initialNode);
+            ExploreBranchTree(initialRoute, initialCell);
         }
 
         #endregion
@@ -71,10 +71,10 @@ namespace Blakes.Graph
         #region LocalMethods
 
         //Recursive Method
-        protected void ExploreBranchTree(Route previousRoute, Node actualNodeToExplore)
+        protected void ExploreBranchTree(Route previousRoute, Cell actualNodeToExplore)
         {
             //Are we in the destiny node
-            if (actualNodeToExplore == finalNode)
+            if (actualNodeToExplore == finalCell)
             {
                 allValidRoutes.Add(previousRoute);
                 //Break point for recursivity at this level
@@ -85,7 +85,7 @@ namespace Blakes.Graph
                 //validate the connections of the actual node
                 foreach (Connection connectionOfTheActualNode in actualNodeToExplore.GetConnections)
                 {
-                    Node nextNode = connectionOfTheActualNode.RetreiveOtherNodeThan(actualNodeToExplore);
+                    Cell nextNode = connectionOfTheActualNode.RetreiveOtherNodeThan(actualNodeToExplore);
 
                     if (!previousRoute.ContainsNodeInRoute(nextNode))
                     {
@@ -129,54 +129,54 @@ namespace Blakes.Graph
                     Vector3 nodePosition = startPosition + new Vector3(x * cellSize, 1f, z * cellSize);
                     GameObject nodesInstance = Instantiate(prefabNodeTest, nodePosition, Quaternion.identity);
                     nodesInstance.name = $"Node {x} {z}";
-                    nodesInstance.GetComponent<Node>().ValidNode();
+                    nodesInstance.GetComponent<Cell>().ValidNode();
                     nodesInstance.transform.SetParent(this.transform);
-                    if (nodesInstance.GetComponent<Node>().isNodeConnectable)
+                    if (nodesInstance.GetComponent<Cell>().isNodeConnectable)
                     {
-                        graph.Add(nodesInstance.GetComponent<Node>());
+                        graph.Add(nodesInstance.GetComponent<Cell>());
                     }
-                    nodesContainer.Add(nodesInstance.GetComponent<Node>());
+                    nodesContainer.Add(nodesInstance.GetComponent<Cell>());
                 }
             }
 
             GameObject goNode = Instantiate(prefabNodeTest, initialPosition.transform.position, Quaternion.identity);
             goNode.name = $"Node Initial";
-            initialNode = goNode.GetComponent<Node>();
-            initialNode.ValidNode();
+            initialCell = goNode.GetComponent<Cell>();
+            initialCell.ValidNode();
             goNode.transform.SetParent(this.transform);
-            if (initialNode.isNodeConnectable)
+            if (initialCell.isNodeConnectable)
             {
-                graph.Add(initialNode);
+                graph.Add(initialCell);
             }
-            nodesContainer.Add(initialNode);
+            nodesContainer.Add(initialCell);
 
             goNode = Instantiate(prefabNodeTest, finalPosition.transform.position, Quaternion.identity);
             goNode.name = $"Node Final";
-            finalNode = goNode.GetComponent<Node>();
-            finalNode.ValidNode();
+            finalCell = goNode.GetComponent<Cell>();
+            finalCell.ValidNode();
             goNode.transform.SetParent(this.transform);
-            if (finalNode.isNodeConnectable)
+            if (finalCell.isNodeConnectable)
             {
-                graph.Add(finalNode);
+                graph.Add(finalCell);
             }
-            nodesContainer.Add(finalNode);
+            nodesContainer.Add(finalCell);
         }
 
         public void ConnectionNodes()
         {
 
-            foreach (Node node in graph)
+            foreach (Cell cell in graph)
             {
-                node.RayCastAndDistanceForAllNodes();
+                cell.RayCastAndDistanceForAllNodes();
             }
 
         }
 
         public void ClearAll()
         {
-            foreach (Node node in nodesContainer)
+            foreach (Cell cell in nodesContainer)
             {
-                DestroyImmediate(node.gameObject);
+                DestroyImmediate(cell.gameObject);
             }
             graph.Clear();
             nodesContainer.Clear();
@@ -245,7 +245,7 @@ namespace Blakes.Graph
 
         #region GetterSetters
 
-        public List<Node> GetListOfNodes
+        public List<Cell> GetListOfNodes
         {
             get { return graph; }
         }

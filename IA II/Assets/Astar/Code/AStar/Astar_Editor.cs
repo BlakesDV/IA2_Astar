@@ -6,7 +6,7 @@ using UnityEditor;
 namespace Blakes.Graph
 {
     [CustomEditor(typeof(Astar))]
-    public class Dijkstra_Editor : Editor
+    public class Astar_Editor : Editor
     {
         #region RuntimeVariables
 
@@ -52,12 +52,12 @@ namespace Blakes.Graph
 
         #endregion
 
-        public Astar SetDijkstra
+        public Astar SetAstar
         {
             set { _Astar = value; }
         }
 
-        public Astar GetDijkstra
+        public Astar GetAstar
         {
             get { return _Astar; }
         }

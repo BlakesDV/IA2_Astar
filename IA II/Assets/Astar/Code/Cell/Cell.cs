@@ -5,9 +5,9 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
-namespace Blakes.Graph 
+namespace Blakes.Graph
 {
-    public class Node : MonoBehaviour
+    public class Cell : MonoBehaviour
     {
         #region Directions
 
@@ -76,7 +76,7 @@ namespace Blakes.Graph
                 if (Physics.Raycast(transform.position, direction, out hit, 100))
                 {
                     if (hit.collider.gameObject.CompareTag("Node") &&
-                        hit.transform.gameObject.GetComponent<Node>().isNodeConnectable == true)
+                        hit.transform.gameObject.GetComponent<Cell>().isNodeConnectable == true)
                     {
                         RaycastHit confirmHit;
                         if (Physics.Raycast(hit.transform.position, this.transform.position - hit.transform.position, out confirmHit, 100))
@@ -86,7 +86,7 @@ namespace Blakes.Graph
                                 Connection newConecction = new Connection();
                                 connections.Add(newConecction);
                                 newConecction.nodeA = this;
-                                newConecction.nodeB = hit.transform.gameObject.GetComponent<Node>();
+                                newConecction.nodeB = hit.transform.gameObject.GetComponent<Cell>();
                                 newConecction.ditanceBetweenNodes =
                                     Vector3.Distance(this.transform.position, hit.transform.position);
                             }

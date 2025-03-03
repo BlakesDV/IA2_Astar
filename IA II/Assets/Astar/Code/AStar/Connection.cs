@@ -8,13 +8,13 @@ namespace Blakes.Graph
     public class Connection
     {
         //Alway two nodes
-        [SerializeField] public Node nodeA;
-        [SerializeField] public Node nodeB;
+        [SerializeField] public Cell nodeA;
+        [SerializeField] public Cell nodeB;
         [SerializeField] public float ditanceBetweenNodes;
 
         #region PublicMethods
 
-        public Node RetreiveOtherNodeThan(Node value)
+        public Cell RetreiveOtherNodeThan(Cell value)
         {
             if (value == nodeA)
             {
@@ -36,7 +36,7 @@ namespace Blakes.Graph
     {
         #region Variables
 
-        [SerializeField] public List<Node> nodes;
+        [SerializeField] public List<Cell> nodes;
         [SerializeField] public float sumDistance;
 
         #endregion
@@ -46,18 +46,18 @@ namespace Blakes.Graph
 
         public Route()
         {
-            nodes = new List<Node>();
+            nodes = new List<Cell>();
             sumDistance = 0;
         }
 
-        public Route(List<Node> nodesToClone, float sumDistanceToCopy)
+        public Route(List<Cell> nodesToClone, float sumDistanceToCopy)
         {
             //Generate a new pointer in the RAM for this NEW collection of nodes
-            nodes = new List<Node>();
+            nodes = new List<Cell>();
             //we will retrieve all pointers from the nodes from the "original" list
-            foreach (Node node in nodesToClone)
+            foreach (Cell cell in nodesToClone)
             {
-                nodes.Add(node);
+                nodes.Add(cell);
             }
             //*nodes != 
 
@@ -68,17 +68,17 @@ namespace Blakes.Graph
 
         #region PublicMethods
 
-        public void AddNode(Node nodeValue, float sumValue)
+        public void AddNode(Cell nodeValue, float sumValue)
         {
             nodes.Add(nodeValue);
             sumDistance += sumValue;
         }
 
-        public bool ContainsNodeInRoute(Node value)
+        public bool ContainsNodeInRoute(Cell value)
         {
-            foreach (Node node in nodes)
+            foreach (Cell cell in nodes)
             {
-                if (value == node)
+                if (value == cell)
                 {
                     return true;
                 }
