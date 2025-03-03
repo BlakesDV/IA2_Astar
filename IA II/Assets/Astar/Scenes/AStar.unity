@@ -589,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7afdf455503854f82bb8b0f446c0ad08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7afdf455503854f82bb8b0f446c0ad08, type: 3}
       propertyPath: m_LocalPosition.z
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeX: 30
-  sizeZ: 30
+  sizeZ: 31
   cellSize: 1
   prefabNodeTest: {fileID: 6734007332608686932, guid: 30aa92de8af327f45bf37359cabdefcb, type: 3}
   initialPosition: {fileID: 1441899810}
@@ -800,8 +800,8 @@ MonoBehaviour:
   allRoutes: []
   allValidRoutes: []
   theRoute: []
-  initialNode: {fileID: 5723946478336311995, guid: 30aa92de8af327f45bf37359cabdefcb, type: 3}
-  finalNode: {fileID: 1936033186237699730}
+  initialNode: {fileID: 0}
+  finalNode: {fileID: 0}
 --- !u!4 &1062345391
 Transform:
   m_ObjectHideFlags: 0
