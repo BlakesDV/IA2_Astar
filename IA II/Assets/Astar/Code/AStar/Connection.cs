@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Blakes.Graph
+namespace Blakes.Astar
 {
     [System.Serializable]
     public class Connection

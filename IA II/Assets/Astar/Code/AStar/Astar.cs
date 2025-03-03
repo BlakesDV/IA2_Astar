@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Blakes.FSM;
 
-namespace Blakes.Graph 
+namespace Blakes.Astar 
 {
     public class Astar : MonoBehaviour
     {
@@ -13,11 +13,13 @@ namespace Blakes.Graph
 
         #region RuntimeVariables
 
+        [SerializeField] protected CellFSM[,] _matrizBidimensional;
+        protected CellFSM _cell;
+
         [SerializeField] protected int sizeX = 10;
         [SerializeField] protected int sizeZ = 10;
         [SerializeField] float cellSize = 1.0f;
         [SerializeField] protected GameObject prefabNodeTest;
-        //protected GameObject nodesContainer;
 
         #endregion
 

@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
-namespace Blakes.Graph
+namespace Blakes.Astar
 {
     public class Cell : MonoBehaviour
     {
@@ -37,10 +37,6 @@ namespace Blakes.Graph
 
         #region UnityMethods
 
-        private void Awake()
-        {
-
-        }
 
         private void OnDrawGizmos()
         {

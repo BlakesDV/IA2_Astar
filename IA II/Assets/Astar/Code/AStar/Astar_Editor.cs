@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Blakes.Graph
+namespace Blakes.Astar
 {
     [CustomEditor(typeof(Astar))]
     public class Astar_Editor : Editor
