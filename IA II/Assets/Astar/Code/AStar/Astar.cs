@@ -26,15 +26,10 @@ namespace Blakes.Astar
 
         #region References
 
-        //both will be obtained by calculating the leeser distance between:
-        //Avatar VS all nodes
-        //Goal VS all nodes
+
         [SerializeField] protected GameObject initialPosition;
         [SerializeField] protected GameObject finalPosition;
 
-        //The collection of all the nodes
-        //Wich every node contains multiple connection
-        //defines the graph 
         
         [SerializeField] protected List<Cell> graph;
         [SerializeField] protected List<Cell> nodesContainer;
@@ -43,9 +38,6 @@ namespace Blakes.Astar
         
         #region RuntimeVariables
 
-        protected Route initialRoute;
-        [SerializeField] protected List<Route> allRoutes;
-        [SerializeField] protected List<Route> allValidRoutes;
         [SerializeField] protected List<Route> theRoute;
 
         [SerializeField] protected Cell initialCell;
@@ -55,63 +47,12 @@ namespace Blakes.Astar
 
         #region GUILayoutButton
 
-        public void CalculateAllRoutes()
-        {
-            initialRoute = new Route();
-            initialRoute.AddNode(initialCell, 0);
-
-            allRoutes = new List<Route>();
-            allRoutes.Add(initialRoute);
-            //Recursive Method
-            ExploreBranchTree(initialRoute, initialCell);
-        }
-
         #endregion
 
         #region LocalMethods
 
         //Recursive Method
-        protected void ExploreBranchTree(Route previousRoute, Cell actualNodeToExplore)
-        {
-            //Are we in the destiny node
-            if (actualNodeToExplore == finalCell)
-            {
-                allValidRoutes.Add(previousRoute);
-                //Break point for recursivity at this level
-                return;
-            }
-            else
-            {
-                //validate the connections of the actual node
-                foreach (Connection connectionOfTheActualNode in actualNodeToExplore.GetConnections)
-                {
-                    Cell nextNode = connectionOfTheActualNode.RetreiveOtherNodeThan(actualNodeToExplore);
-
-                    if (!previousRoute.ContainsNodeInRoute(nextNode))
-                    {
-                        //1) Furthe exploration in a branch of the tree
-                        //Invocation to itself
-                        Route newRoute = new Route(
-                            previousRoute.nodes,
-                            previousRoute.sumDistance
-                            );
-                        newRoute.AddNode(
-                            nextNode,
-                            connectionOfTheActualNode.ditanceBetweenNodes
-                            );
-                        allRoutes.Add(newRoute); //truncated route
-                                                 //Invocation to itself to continue recursivity
-                        ExploreBranchTree(newRoute, nextNode);
-                    }
-                    else
-                    {
-                        //2) Connection to a previously explored node in the route
-                        //Break point for recursivity
-                    }
-                }
-            }
-            //Cut the recursivity
-        }
+        
 
         #endregion
 
@@ -180,27 +121,9 @@ namespace Blakes.Astar
             }
             graph.Clear();
             nodesContainer.Clear();
-            allRoutes.Clear();
-            allValidRoutes.Clear();
             theRoute.Clear();
         }
 
-        public void OptimizeRoute()
-        {
-            Route TheRealRoute = new Route();
-            float theShortestRoute = float.MaxValue;
-
-            foreach (Route route in allValidRoutes)
-            {
-                if (route.sumDistance < theShortestRoute)
-                {
-                    theShortestRoute = route.sumDistance;
-                    TheRealRoute = route;
-                    theRoute.Clear();
-                    theRoute.Add(TheRealRoute);
-                }
-            }
-        }
 
         //public void SetMovementOnSO()
         //{
@@ -259,7 +182,6 @@ namespace Blakes.Astar
         {
             get { return cellSize; }
         }
-        //getter of the list
 
         #endregion
     }
