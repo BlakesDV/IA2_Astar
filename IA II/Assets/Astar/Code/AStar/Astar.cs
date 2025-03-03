@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Blakes.FSM;
+using static IconManager;
 
 namespace Blakes.Astar 
 {
@@ -217,6 +218,11 @@ namespace Blakes.Astar
         #endregion
 
         #region UnityMethods
+
+        private void Start()
+        {
+            IconManager.SetIcon(gameObject, LabelIcon.Orange);
+        }
 
         private void OnDrawGizmos()
         {

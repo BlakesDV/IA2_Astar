@@ -195,4 +195,5 @@ MonoBehaviour:
     _state: {fileID: 1767768737553370882}
     _pos: {fileID: 394341868240908601}
     _aStar: {fileID: 0}
+    _meshrenderer: {fileID: 6833388019312602894}
   weight: 0

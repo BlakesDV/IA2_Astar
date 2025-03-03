@@ -36,6 +36,7 @@ namespace Blakes.Astar
         [SerializeField] public GameObject _state;
         [SerializeField] public GameObject _pos;
         [SerializeField] public Astar _aStar;
+        [SerializeField] public MeshRenderer _meshrenderer;
     }
 
     #endregion
@@ -61,26 +62,31 @@ namespace Blakes.Astar
         {
             IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Gray);
             IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Gray);
+            _cellReferences._meshrenderer.material = _cellReferences.matCellState.UNDEFINED;
         }
         private void WeightedStateMethod()
         {
             IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Blue);
             IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Blue);
+            _cellReferences._meshrenderer.material = _cellReferences.matCellState.WEIGHTED;
         }
         private void PropagatedStateMethod()
         {
             IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Green);
             IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Green);
+            _cellReferences._meshrenderer.material = _cellReferences.matCellState.PROPAGATED;
         }
         private void DiscardedStateMethod()
         {
             IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Orange);
             IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Orange);
+            _cellReferences._meshrenderer.material = _cellReferences.matCellState.DISCARDED;
         }
         private void BlockedStateMethod()
         {
             IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Red);
             IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Red);
+            _cellReferences._meshrenderer.material = _cellReferences.matCellState.BLOCKED;
         }
 
         #endregion
