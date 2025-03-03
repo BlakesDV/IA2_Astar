@@ -46,9 +46,6 @@ namespace Blakes.Astar
         [SerializeField] protected List<Route> allRoutes;
         [SerializeField] protected List<Route> allValidRoutes;
         [SerializeField] protected List<Route> theRoute;
-        //succesfullRoutes
-        //truncatedRoutes
-        //failledRoutes
 
         [SerializeField] protected Cell initialCell;
         [SerializeField] protected Cell finalCell;

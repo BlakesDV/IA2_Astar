@@ -800,8 +800,8 @@ MonoBehaviour:
   allRoutes: []
   allValidRoutes: []
   theRoute: []
-  initialNode: {fileID: 0}
-  finalNode: {fileID: 0}
+  initialCell: {fileID: 0}
+  finalCell: {fileID: 0}
 --- !u!4 &1062345391
 Transform:
   m_ObjectHideFlags: 0
@@ -1262,7 +1262,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bbd2ac4f7e6e439419bb47a4425f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listaDeDirecciones:
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: -1}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 0.5, y: 0, z: 0.5}
+  - {x: -0.5, y: 0, z: -0.5}
+  - {x: -0.5, y: 0, z: 0.5}
+  - {x: 0.5, y: 0, z: -0.5}
   connections: []
+  _aStar: {fileID: 0}
   isNodeConnectable: 1
   defaultNodeMaterial: {fileID: 0}
   invalidNodeMaterial: {fileID: 0}
@@ -1460,7 +1470,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bbd2ac4f7e6e439419bb47a4425f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listaDeDirecciones:
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: -1}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 0.5, y: 0, z: 0.5}
+  - {x: -0.5, y: 0, z: -0.5}
+  - {x: -0.5, y: 0, z: 0.5}
+  - {x: 0.5, y: 0, z: -0.5}
   connections: []
+  _aStar: {fileID: 0}
   isNodeConnectable: 1
   defaultNodeMaterial: {fileID: 0}
   invalidNodeMaterial: {fileID: 0}

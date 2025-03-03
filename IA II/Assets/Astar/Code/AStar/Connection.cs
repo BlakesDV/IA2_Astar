@@ -7,7 +7,6 @@ namespace Blakes.Astar
     [System.Serializable]
     public class Connection
     {
-        //Alway two nodes
         [SerializeField] public Cell nodeA;
         [SerializeField] public Cell nodeB;
         [SerializeField] public float ditanceBetweenNodes;
@@ -42,7 +41,6 @@ namespace Blakes.Astar
         #endregion
 
         #region Constructors
-        //Generate a contructor to generate a new pointer of this new route
 
         public Route()
         {
@@ -52,14 +50,11 @@ namespace Blakes.Astar
 
         public Route(List<Cell> nodesToClone, float sumDistanceToCopy)
         {
-            //Generate a new pointer in the RAM for this NEW collection of nodes
             nodes = new List<Cell>();
-            //we will retrieve all pointers from the nodes from the "original" list
             foreach (Cell cell in nodesToClone)
             {
                 nodes.Add(cell);
             }
-            //*nodes != 
 
             sumDistance = sumDistanceToCopy;
         }

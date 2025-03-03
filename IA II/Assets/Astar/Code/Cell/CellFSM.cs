@@ -18,8 +18,42 @@ namespace Blakes.Astar
 
     #endregion
 
+    #region Structs
+
+    [System.Serializable]
+    public struct MaterialCellState
+    {
+        public Material UNDEFINED;
+        public Material WEIGHTED;
+        public Material PROPAGATED;
+        public Material DISCARDED;
+        public Material BLOCKED;
+    }
+    [System.Serializable]
+    public struct CellReferences
+    {
+        [SerializeField] public MaterialCellState matCellState;
+        [SerializeField] public GameObject _state;
+        [SerializeField] public GameObject _pos;
+        [SerializeField] public Astar _aStar;
+    }
+
+    #endregion
+
     public class CellFSM : MonoBehaviour
     {
+        #region References
+
+        [SerializeField] protected CellReferences _cellReferences;
+
+        #endregion
+
+        #region RuntimeVars
+
+        [SerializeField] protected int weight;
+        protected CellStates _currentState;
+
+        #endregion
 
         #region StateMethods
 
@@ -70,6 +104,14 @@ namespace Blakes.Astar
             }
         }
 
+        #endregion
+
+        #region GettersAndSetters
+
+        public Astar SetAStar
+        {
+            set { _cellReferences._aStar = value; }
+        }
         #endregion
     }
 }
