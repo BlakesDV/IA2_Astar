@@ -32,15 +32,7 @@ namespace Blakes.Astar
             {
                 _Astar.ConnectionNodes();
             }
-            if (GUILayout.Button("3) Calculate all routes"))
-            {
-                _Astar.CalculateAllRoutes();
-            }
-            if (GUILayout.Button("4) Calculate Best Route"))
-            {
-                _Astar.OptimizeRoute();
-            }
-            //if (GUILayout.Button("5) Set Movement to Agent"))
+            //if (GUILayout.Button("3) Set Movement to Agent"))
             //{
             //    _Astar.SetMovementOnSO();
             //}

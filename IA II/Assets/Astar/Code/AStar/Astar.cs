@@ -14,7 +14,7 @@ namespace Blakes.Astar
 
         #region RuntimeVariables
 
-        [SerializeField] protected CellFSM[,] _matrizBidimensional;
+        [SerializeField] protected CellFSM[,] _2dMatrix;
         protected CellFSM _cell;
 
         [SerializeField] protected int sizeX = 10;
@@ -60,6 +60,7 @@ namespace Blakes.Astar
 
         public void ProbeNodes()
         {
+            _2dMatrix = new CellFSM[sizeX,sizeZ];
             Vector3 startPosition = transform.position -
                                 new Vector3(sizeX * cellSize, 0, sizeZ * cellSize);
 
@@ -67,16 +68,16 @@ namespace Blakes.Astar
             {
                 for (int z = 0; z < sizeZ; z++)
                 {
-                    Vector3 nodePosition = startPosition + new Vector3(x * cellSize, 1f, z * cellSize);
-                    GameObject nodesInstance = Instantiate(prefabNodeTest, nodePosition, Quaternion.identity);
-                    nodesInstance.name = $"Node {x} {z}";
-                    nodesInstance.GetComponent<Cell>().ValidNode();
-                    nodesInstance.transform.SetParent(this.transform);
-                    if (nodesInstance.GetComponent<Cell>().isNodeConnectable)
+                    Vector3 cellSpawnPos = startPosition + new Vector3(x * cellSize, 1f, z * cellSize);
+                    GameObject cellInstance = Instantiate(prefabNodeTest, cellSpawnPos, Quaternion.identity);
+                    cellInstance.name = $"Node {x} {z}";
+                    cellInstance.GetComponent<Cell>().ValidNode();
+                    cellInstance.transform.SetParent(this.transform);
+                    if (cellInstance.GetComponent<Cell>().isNodeConnectable)
                     {
-                        graph.Add(nodesInstance.GetComponent<Cell>());
+                        graph.Add(cellInstance.GetComponent<Cell>());
                     }
-                    nodesContainer.Add(nodesInstance.GetComponent<Cell>());
+                    nodesContainer.Add(cellInstance.GetComponent<Cell>());
                 }
             }
 
