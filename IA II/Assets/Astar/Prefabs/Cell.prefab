@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7528752838888919154}
   - component: {fileID: 7736446145743158962}
   m_Layer: 0
-  m_Name: Node
+  m_Name: Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,12 +187,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cellReferences:
     matCellState:
-      UNDEFINED: {fileID: 0}
-      WEIGHTED: {fileID: 0}
-      PROPAGATED: {fileID: 0}
-      DISCARDED: {fileID: 0}
-      BLOCKED: {fileID: 0}
+      UNDEFINED: {fileID: 2100000, guid: 4b862715e5e97564ea78beb6de5b6ea7, type: 2}
+      WEIGHTED: {fileID: 2100000, guid: cb46ac0a8a450e24c83f576d92ad4ae2, type: 2}
+      PROPAGATED: {fileID: 2100000, guid: df9dd5a7b5853db458ef4ddd43d7146b, type: 2}
+      DISCARDED: {fileID: 2100000, guid: 38e0b29a98ac5ec448edae6df169fd3a, type: 2}
+      BLOCKED: {fileID: 2100000, guid: 04664c6af4929a346b7fe2f9505de4e0, type: 2}
     _state: {fileID: 1767768737553370882}
     _pos: {fileID: 394341868240908601}
+    _aStar: {fileID: 0}
   weight: 0
-  _aStar: {fileID: 0}

@@ -56,26 +56,31 @@ namespace Blakes.Astar
         #endregion
 
         #region StateMethods
-
+        
         private void UndefinedStateMethod()
         {
-            throw new NotImplementedException();
+            IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Gray);
+            IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Gray);
         }
         private void WeightedStateMethod()
         {
-            throw new NotImplementedException();
+            IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Blue);
+            IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Blue);
         }
         private void PropagatedStateMethod()
         {
-            throw new NotImplementedException();
+            IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Green);
+            IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Green);
         }
         private void DiscardedStateMethod()
         {
-            throw new NotImplementedException();
+            IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Orange);
+            IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Orange);
         }
         private void BlockedStateMethod()
         {
-            throw new NotImplementedException();
+            IconManager.SetIcon(_cellReferences._state, IconManager.LabelIcon.Red);
+            IconManager.SetIcon(_cellReferences._pos, IconManager.LabelIcon.Red);
         }
 
         #endregion
@@ -84,6 +89,8 @@ namespace Blakes.Astar
 
         public virtual void StateMechanic(CellStates value)
         {
+            _currentState = value;
+            _cellReferences._state.name = _currentState.ToString();
             switch (value)
             {
                 case CellStates.UNDEFINED:
